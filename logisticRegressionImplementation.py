@@ -85,7 +85,7 @@ class TrainBiasDataset(Dataset):
             X = data.iloc[ind][['topic', 'source']].to_numpy()
             X = np.concatenate((np.array(X), np.array(p_vectors)))
             if ind == 0: self.feature_size = len(X)
-            y = data.iloc[ind]['bias_score']
+            y = data.iloc[ind]['bias']
             split_data += [(X, y)]
 
         self.xs, self.ys = zip(*split_data)
@@ -245,7 +245,7 @@ def bias_classification():
     # tests classification on 
     for n in [2,3]:
         # trains the model passing in both test and train sets to make sure that accuracies are tracked
-        data_path = "normalized_data_WITH_CENTER.csv" if n == 3 else "normalized_data_no_center.csv"
+        data_path = "normalizedDataWithCenter.csv" if n == 3 else "normalizedDataNoCenter.csv"
         train_data = TrainBiasDataset(data_path = data_path, classes = n)
         feature_size = train_data.feature_size
         train_model = MultiLogisticRegressionModel(num_features=feature_size, num_classes = n)
