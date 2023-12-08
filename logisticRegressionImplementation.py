@@ -241,7 +241,9 @@ class MultiLogisticRegressionModel(Model):
         """
         for i in range(sample_size):
             if i % accuracy_sample_frequency == 0:
-                self.train_accuracies.append(dataset.compute_average_accuracy(self))
+                accuracy = dataset.compute_average_accuracy(self)
+                self.train_accuracies.append(accuracy)
+                print(f'Iteration {i+250},', f'Accuracy: {accuracy}')
             x, y = dataset.get_sample()
             gradient = self.gradient(x, y)
             self.weights -= self.learning_rate * gradient
@@ -280,7 +282,7 @@ def bias_classification():
 
         # Report the accuracies gathered during the training of the model
         accuracies = train_model.get_training_accuracies()
-        print('Accuracies: {}'.format(accuracies))
+        print(f'Accuracies: {accuracies}')
 
         # Plot the accuracy curve
         train_data.plot_accuracy_curve(eval_iters=range(0, sample_size, accuracy_sample_frequency),
