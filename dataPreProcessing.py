@@ -30,7 +30,6 @@ def remove_words(text, words_to_remove):
         text = text.replace(word, ' ')
     return text
 
-
 # Remove the unnecessary words from the 'content_original' and 'title' columns
 data['content_original'] = data['content_original'].apply(remove_words, args=([removed_words]))
 data['title'] = data['title'].apply(remove_words, args=([removed_words]))

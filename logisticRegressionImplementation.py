@@ -3,7 +3,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 
+'''
+    Citation for the Model abstract class definition
 
+    Title: Programming Assignment 4, Artificial Intelligence CS4100
+	Author: Lawson Wong, Northeastern Univeristy
+	Date: November 2023
+	Code version: 1.0
+	Availability: Distributed to CS4100 Students
+'''
 class Model:
     """
     Abstract class for a machine learning model.
@@ -30,7 +38,15 @@ class Model:
     def train(self, dataset, sample_size, accuracy_sample_frequency):
         pass
 
+'''
+    Citation for the Dataset abstract class definition
 
+    Title: Programming Assignment 4, Artificial Intelligence CS4100
+	Author: Lawson Wong, Northeastern Univeristy
+	Date: November 2023
+	Code version: 1.0
+	Availability: Distributed to CS4100 Students
+'''
 class Dataset:
     """
     Abstract class for a machine learning dataset.
@@ -70,41 +86,58 @@ class Dataset:
 
 class TrainBiasDataset(Dataset):
     """
-    Dataset specifically tailored for logistic regression. It initializes with data from a specified path
-    and the number of classes. The class handles data preprocessing, splitting it into training and testing
-    sets. Notable methods include plot_accuracy_curve, which visualizes the training accuracy curve over
-    iterations, and plot_confusion_matrix, which plots the confusion matrix of the model's predictions.
-    The class provides a comprehensive set of tools for evaluating and visualizing the performance of logistic
-    regression models on bias classification tasks.
+    Dataset specifically tailored for logistic regression on a dataset that has to do with political bias
+    detection. It initializes with data from a specified path and the number of classes. The class handles 
+    data preprocessing, splitting it into training and testing sets. Notable methods include plot_accuracy_curve
+    which visualizes the training accuracy curve over iterations, and plot_confusion_matrix, which plots the
+    confusion matrix of the model's predictions. The class provides a comprehensive set of tools for evaluating 
+    and visualizing the performance of logistic regression models on bias classification tasks. Assumes that 
+    the dataset has the columns 'topic', 'source', and 'bias_score' and columns labed with str(#) for all # in 
+    range(0, 100).
     """
 
     def __init__(self, data_path, classes):
-
+        # take in the dataset
         data = pd.read_csv(data_path)
+
+        # the number of classes to predict into 
         classes = range(classes)
 
+        # separate the data into two groupings, the features (X) and the targets (y)
         split_data = []
         self.feature_size = 0
-
         for ind in data.index:
+            # the paragraph vectors (columns 0-99), the 'topic' and 'source' are the features
             p_vectors = data.iloc[ind][[str(i) for i in range(100)]].to_numpy()
             X = data.iloc[ind][['topic', 'source']].to_numpy()
+            # merge all the feature columns into an array
             X = np.concatenate((np.array(X), np.array(p_vectors)))
             if ind == 0:
                 self.feature_size = len(X)
+            # the 'bias_score' is the target variable
             y = data.iloc[ind]['bias_score']
             split_data += [(X, y)]
-
         self.xs, self.ys = zip(*split_data)
-
+        
+        # get a training sample from the data to train the model on
         X_train, X_test, y_train, y_test = train_test_split(self.xs, self.ys, test_size=0.2, random_state=42)
-
         self.xs = X_train
         self.ys = y_train
+
         self.index = 0
         self.classes = classes
         self.class_labels = [str(k) for k in self.classes]
 
+    '''
+        Citation for the plot_accuracy_curve and plot_confusion_matrix
+        function definitions
+
+        Title: Programming Assignment 4, Artificial Intelligence CS4100
+        Author: Lawson Wong, Northeastern Univeristy
+        Date: November 2023
+        Code version: 1.0
+        Availability: Distributed to CS4100 Students
+    '''
     def plot_accuracy_curve(self, eval_iters, accuracies, title=None):
         plt.plot(eval_iters, accuracies)
         plt.ylim([0, 1])
@@ -258,7 +291,7 @@ def bias_classification():
     This function encapsulates the process of evaluating logistic regression models on various bias
     classification for articles.
     """
-    # Tests classification on
+    # Tests classification on 2 class predictions and 3 class predictions
     for n in [2, 3]:
 
         # Trains the model passing in both test and train sets to make sure that accuracies are tracked
