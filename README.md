@@ -22,9 +22,11 @@ To create the normalized datasets, `normalizedDataNoCenter.csv`, which inlcudes 
 
 - The code following the `FAILED DATA ATTEMPTS` section is just for reference to record our prior attempts at turning the article content data into numerical data. Please remove the two sections, `TF-IDF` and `WORD2VEC` in order to create the two datasets needed for our Multinomial Regression Model.
 - Use the `Article-Bias-Prediction.csv` to:
+
       1. Clean the data file
       2. Perform Doc2Vec vectorization
           - This step will leave you with a file called `doc2vec_bias.csv`
       3. Normalize the `paragraph_vector` data
+
 - Following these steps, you will have created `normalizedDataNoCenter.csv` and `normalizedDataWithCenter.csv` which can then be utilized on the Multinomial Regression Model.
   
