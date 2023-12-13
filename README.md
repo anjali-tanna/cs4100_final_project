@@ -15,4 +15,16 @@ The objective of the project centers on the optimization of a multinomial regres
 ***
 
 ## Dataset
-The dataset `Article-Bias-Prediction` utilized for training and testing the model is sourced from a publicly available repository on Google Datasets, accessible through the [Hugging Face platform.](https://huggingface.co/datasets/cjziems/Article-Bias-Prediction)
+The dataset `Article-Bias-Prediction.csv` utilized for training and testing the model is sourced from a publicly available repository on Google Datasets, accessible through the [Hugging Face platform.](https://huggingface.co/datasets/cjziems/Article-Bias-Prediction)
+
+### Utilizing the `dataPreProcessing.py` File:
+To create the normalized datasets, `normalizedDataNoCenter.csv`, which inlcudes only left and right biases, and `normalizedDataWithCenter.csv`, which includes left, center, and right biases, please refer to these notes.
+
+- The code following the `FAILED DATA ATTEMPTS` section is just for reference to record our prior attempts at turning the article content data into numerical data. Please remove the two sections, `TF-IDF` and `WORD2VEC` in order to create the two datasets needed for our Multinomial Regression Model.
+- Use the `Article-Bias-Prediction.csv` to:
+      1. Clean the data file
+      2. Perform Doc2Vec vectorization
+          - This step will leave you with a file called `doc2vec_bias.csv`
+      3. Normalize the `paragraph_vector` data
+- Following these steps, you will have created `normalizedDataNoCenter.csv` and `normalizedDataWithCenter.csv` which can then be utilized on the Multinomial Regression Model.
+  
