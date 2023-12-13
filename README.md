@@ -15,4 +15,4 @@ The objective of the project centers on the optimization of a multinomial regres
 ***
 
 ## Dataset
-The dataset utilized for training and testing the model is sourced from a publicly available repository on Google Datasets, accessible through the [Hugging Face platform.](https://huggingface.co/datasets/cjziems/Article-Bias-Prediction)
+The dataset `Article-Bias-Prediction` utilized for training and testing the model is sourced from a publicly available repository on Google Datasets, accessible through the [Hugging Face platform.](https://huggingface.co/datasets/cjziems/Article-Bias-Prediction)
