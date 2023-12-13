@@ -1,5 +1,5 @@
 # CS4100 Final Project
-## Addressing Political Bias in News Articles with Multinomial Regression
+## [Addressing Political Bias in News Articles with Multinomial Regression](https://docs.google.com/document/d/1Ikoay_N5WoR-IqjMdaVAHz-y5ivq-MUC452NJHw-rLk/edit?usp=sharing)
 ### Taylor Stevens and Anjali Tanna
 
 ***
