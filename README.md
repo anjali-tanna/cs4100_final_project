@@ -11,3 +11,8 @@ Understanding that mitigating bias demands a multifaceted strategy anchored in d
 
 ## Problem Statement
 The objective of the project centers on the optimization of a multinomial regression model tailored for predicting bias in online articles. This model operates on a dataset comprising crucial columns, topic, source, bias_score, and paragraph_vectors (reflecting article content), each numerically encoded and normalized. 
+
+***
+
+## Dataset
+The dataset utilized for training and testing the model is sourced from a publicly available repository on Google Datasets, accessible through the [Hugging Face platform.](https://huggingface.co/datasets/cjziems/Article-Bias-Prediction)
