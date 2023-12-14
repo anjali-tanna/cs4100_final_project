@@ -32,7 +32,7 @@ To create the normalized datasets, `normalizedDataNoCenter.csv`, which inlcudes 
 
 ## Multilogistic Regression Model
 
-While the model outputs overall accuracies and confusion matrices, for more detailed errors the following code can be added to the `bias_classification` function within the `logisticRegressionImplementation.py` file to output a given number of misclassification articles (in this case 10): 
+While the model outputs overall accuracies and confusion matrices, for more detailed errors the following code can be added to the `bias_classification()` function within the `logisticRegressionImplementation.py` file to output a given number of misclassification articles (in this case 10): 
 
 ```
 errors = 0
