@@ -29,4 +29,20 @@ To create the normalized datasets, `normalizedDataNoCenter.csv`, which inlcudes 
       3. Normalize the `paragraph_vector` data
 
 - Following these steps, you will have created `normalizedDataNoCenter.csv` and `normalizedDataWithCenter.csv` which can then be utilized on the Multinomial Regression Model.
+
+## Multilogistic Regression Model
+
+While the model outputs overall accuracies and confusion matrices, for more detailed errors the following code can be added to the `bias_classification` function within the `logisticRegressionImplementation.py` file to output a given number of misclassification articles (in this case 10): 
+
+```
+errors = 0
+for i in range(1000):
+      x, y = train_data.get_sample()
+      expected, actual = train_model.predict(x), y
+      if (expected != actual):
+          errors += 1
+          print('VECTOR: ', x)
+          if errors > 9:
+              break
+```
   
